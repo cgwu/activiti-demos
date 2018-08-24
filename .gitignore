@@ -1,3 +1,9 @@
+target/
+.idea/
+.bpmn/
+.classpath
+.project
+
 # Compiled class file
 *.class
 
