@@ -31,5 +31,18 @@ Required IntelliJ Configuration
 In your project: Click Preferences -> Build, Execution, Deployment -> Compiler, Annotation Processors. Click Enable Annotation Processing
 Afterwards you might need to do a complete rebuild of your project via Build -> Rebuild Project.
 
+<!-- spring-security会影响url jsessionid,需要设置disable-url-rewriting="false". -->
+<dependency>
+	<groupId>org.springframework.boot</groupId>
+	<artifactId>spring-boot-starter-security</artifactId>
+</dependency>
+<!-- https://mvnrepository.com/artifact/org.thymeleaf.extras/thymeleaf-extras-springsecurity4 -->
+<dependency>
+    <groupId>org.thymeleaf.extras</groupId>
+    <artifactId>thymeleaf-extras-springsecurity4</artifactId>
+    <version>3.0.2.RELEASE</version>
+</dependency>
+
+
 
 

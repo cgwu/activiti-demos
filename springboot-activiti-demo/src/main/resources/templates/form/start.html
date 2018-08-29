@@ -5,7 +5,12 @@
     <title>form start</title>
 </head>
 <body>
-<h1>Form Start</h1>
+<h1>Form Start: 请假表单</h1>
 <span th:text="${m.foo}"></span>
+<form action="" method="post">
+    申请人: <input type="text" name="applyUser"><br>
+    请假天数: <input type="text" name="days"><br>
+    <input type="submit" value="提交申请">
+</form>
 </body>
 </html>

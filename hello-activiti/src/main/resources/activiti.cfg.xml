@@ -7,7 +7,7 @@
           class="org.activiti.engine.impl.cfg.StandaloneInMemProcessEngineConfiguration">
 
         <property name="databaseType" value="postgres"></property>
-        <property name="jdbcUrl" value="jdbc:postgresql://192.168.1.5:5432/activiti_demo" />
+        <property name="jdbcUrl" value="jdbc:postgresql://192.168.1.5:5432/activiti_springboot" />
         <property name="jdbcDriver" value="org.postgresql.Driver" />
         <property name="jdbcUsername" value="postgres" />
         <property name="jdbcPassword" value="postgres" />
