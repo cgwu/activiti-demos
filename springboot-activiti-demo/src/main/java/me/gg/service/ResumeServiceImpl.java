@@ -23,6 +23,6 @@ public class ResumeServiceImpl implements ResumeService {
 
     @Override
     public void storeResume(String userId, String applyUser, float fee) {
-        log.info("UserId:{}, applyUser:{}, fee:{}", userId, applyUser, fee);
+        log.info("发起人ID:{}, applyUser:{}, fee:{}", userId, applyUser, fee);
     }
 }

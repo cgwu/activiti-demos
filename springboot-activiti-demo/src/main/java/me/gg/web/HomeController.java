@@ -1,9 +1,7 @@
 package me.gg.web;
 
-import org.activiti.engine.IdentityService;
-import org.activiti.engine.RepositoryService;
-import org.activiti.engine.RuntimeService;
-import org.activiti.engine.TaskService;
+import lombok.extern.slf4j.Slf4j;
+import org.activiti.engine.*;
 import org.activiti.engine.runtime.ProcessInstance;
 import org.activiti.engine.task.Task;
 import org.slf4j.Logger;
@@ -18,9 +16,10 @@ import java.util.Map;
 /**
  * Created by sam on 18-8-27.
  */
+@Slf4j
 @RestController
 public class HomeController {
-    private static Logger log = LoggerFactory.getLogger(HomeController.class);
+//    private static Logger log = LoggerFactory.getLogger(HomeController.class);
 
     @Autowired
     IdentityService identityService;
@@ -30,6 +29,13 @@ public class HomeController {
     RuntimeService runtimeService;
     @Autowired
     TaskService taskService;
+    @Autowired
+    FormService formService;
+    @Autowired
+    HistoryService historyService;
+    @Autowired
+    ManagementService managementService;
+
 
     @RequestMapping("/")
     public String index() {
@@ -55,7 +61,7 @@ public class HomeController {
         variables.put("days",3);
         variables.put("fee",314.56);
 
-        identityService.setAuthenticatedUserId("张三boy");
+        identityService.setAuthenticatedUserId("白秉德");
         ProcessInstance processInstance = runtimeService.startProcessInstanceByKey("MyServiceTaskProcess",
                 "MyServiceTaskProcess bizKey业务键",variables);
         return "OK, ProcessId: " + processInstance.getId();
