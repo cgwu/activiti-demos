@@ -91,7 +91,7 @@ public class FormController {
         ProcessDefinition procDef = repositoryService.createProcessDefinitionQuery()
                 .processDefinitionKey("AskForLeaveFormProcess").latestVersion().singleResult();
 
-        //使用外置表单时生成内容
+        //使用动态表单时生成内容
 //        Object rendered = formService.getRenderedStartForm(procDef.getId());
 //        log.info("开始表单render: {}",rendered);
 

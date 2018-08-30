@@ -1,0 +1,2 @@
+是否批准: <input type="checkbox" value="true" name="approval"> <br>
+<input type="submit" value="提交">
