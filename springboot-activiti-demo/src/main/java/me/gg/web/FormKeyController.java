@@ -61,11 +61,11 @@ public class FormKeyController {
                 .processDefinitionKey("leave_formkey").latestVersion();
         ProcessDefinition procDef = query.singleResult();
 
-        Map<String,String[]> parameterMap = request.getParameterMap();
-        Map<String,String> formValues = new HashMap<String,String>();
+        Map<String, String[]> parameterMap = request.getParameterMap();
+        Map<String, String> formValues = new HashMap<String, String>();
 
-        for(Map.Entry<String,String[]> entry: parameterMap.entrySet()){
-            formValues.put(entry.getKey(),entry.getValue()[0]);
+        for (Map.Entry<String, String[]> entry : parameterMap.entrySet()) {
+            formValues.put(entry.getKey(), entry.getValue()[0]);
         }
         /*
         StartFormData formData = formService.getStartFormData(procDef.getId());  //拿取流程启动前的表单字段。
@@ -80,9 +80,11 @@ public class FormKeyController {
         }
         */
 
-        identityService.setAuthenticatedUserId("发起人"+request.getParameter("applyUser").toString());
-        ProcessInstance processInstance = formService.submitStartFormData(procDef.getId(),formValues);//启动流程，提交表单
-        return "Start process OK: " +processInstance.getId();
+        String applyUser = request.getParameter("applyUser").toString();
+        identityService.setAuthenticatedUserId("发起人" + applyUser);
+        ProcessInstance processInstance = formService.submitStartFormData(procDef.getId(),
+                "bizKey:" + applyUser, formValues);     //启动流程，提交表单
+        return "Start process OK: " + processInstance.getId();
     }
 
     @GetMapping("/claim/{id}")
@@ -111,6 +113,11 @@ public class FormKeyController {
         } else {
             String taskId = task.getId();
             String procInstId = task.getProcessInstanceId();
+
+//            runtimeService.createExecutionQuery().
+            ProcessInstance processInstance = runtimeService.createProcessInstanceQuery()
+                    .processInstanceId(procInstId).singleResult();
+            log.info("业务键ID:{} ",processInstance.getBusinessKey());
 
             // 获取已有的表单变量
             Map<String,Object> mapVariables = runtimeService.getVariables(task.getExecutionId());
