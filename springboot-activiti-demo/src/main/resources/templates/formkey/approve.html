@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+<head>
+    <meta charset="UTF-8">
+    <title>form start</title>
+</head>
+<body>
+<h1>请假表单key>批准</h1>
+<form action="" method="post">
+    assignee: <h3 th:text="${m.assignee}"></h3>
+    <input type="hidden" name="taskId" th:value="${m.taskId}">
+    申请人: <input type="text" name="applyUser" th:value="${m.variables['applyUser']}"><br>
+    请假天数: <input type="text" name="days"  th:value="${m.variables['days']}"><br>
+
+    是否批准: <input type="checkbox" value="true" name="approval"> <br>
+    <input type="submit" value="提交">
+</form>
+</body>
+</html>

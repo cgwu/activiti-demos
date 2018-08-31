@@ -8,7 +8,8 @@
 
     <process id="leave_formkey" name="请假注程(外部表单)" isExecutable="true">
         <startEvent id="startevent1" name="提交请假请求" activiti:formKey="leave_formkey/start.form"></startEvent>
-        <userTask id="usertask1" name="领导批准" activiti:assignee="gg"
+        <!--activiti:assignee="gg"-->
+        <userTask id="usertask1" name="领导批准" activiti:candidateUsers="gg"
                   activiti:formKey="leave_formkey/approve.form"></userTask>
         <sequenceFlow id="flow1" sourceRef="startevent1" targetRef="usertask1"></sequenceFlow>
         <endEvent id="endevent1" name="End">

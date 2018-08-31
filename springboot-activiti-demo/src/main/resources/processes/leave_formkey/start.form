@@ -1,5 +1,4 @@
 <div>
 申请人: <input type="text" name="applyUser"><br>
 请假天数: <input type="text" name="days"><br>
-<input type="submit" value="提交申请">
 </div>
